@@ -1,19 +1,12 @@
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {globalStyles} from '../../utils/styles';
-import {
-  PartialRoute,
-  Route,
-  RouteProp,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackParamList} from '../../navigation/types';
 import {useEffect, useState} from 'react';
 import {FlatList, Pressable} from 'react-native-gesture-handler';
 import {colors} from '../../utils/colors';
 import CommentBox from '../../component/CommentBox';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {HeaderBackButton} from '@react-navigation/elements';
 import LoadingText from '../../component/LoadingText';
 import ErrorTapable from '../../component/ErrorTapable';
 
@@ -38,21 +31,15 @@ export default function PostDetail(): React.JSX.Element {
       const dataComments = await responseComments.json();
       setComments(dataComments);
       setLoading(false);
-      console.log('fetch complete');
     } catch (error) {
       setLoading(false);
       setIsError(true);
-      console.log('fetch error', error);
     }
   };
 
   useEffect(() => {
     fetchData();
-    console.log('route index', navigation.getState().routes);
   }, []);
-  useEffect(() => {
-    console.log('comments', comments);
-  }, [comments]);
 
   return (
     <SafeAreaView style={globalStyles.container}>

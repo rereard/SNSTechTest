@@ -3,13 +3,9 @@ import {colors} from './colors';
 
 export const globalStyles = StyleSheet.create({
   container: {
-    // borderWidth: 2,
     backgroundColor: colors.white,
     ...StyleSheet.absoluteFillObject,
-    // height: SCREEN_HEIGHT,
-    // width: SCREEN_WIDTH,
     flex: 1,
-    // padding: 10,
   },
   headerTitle: {
     fontSize: 22,
@@ -24,7 +20,6 @@ export const globalStyles = StyleSheet.create({
     },
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
-
     elevation: 24,
   },
 });

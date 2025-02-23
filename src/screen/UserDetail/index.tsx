@@ -1,19 +1,11 @@
-import {
-  PartialRoute,
-  Route,
-  RouteProp,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {StackParamList} from '../../navigation/types';
 import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {globalStyles} from '../../utils/styles';
-import {colors} from '../../utils/colors';
 import {FlatList} from 'react-native-gesture-handler';
 import PostBox from '../../component/PostBox';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {HeaderBackButton} from '@react-navigation/elements';
 import LoadingText from '../../component/LoadingText';
 import ErrorTapable from '../../component/ErrorTapable';
 
@@ -38,21 +30,15 @@ export default function UserDetail(): React.JSX.Element {
       const userPostsData = await userPostsRes.json();
       setUserPosts(userPostsData);
       setLoading(false);
-      console.log('fetch complete');
     } catch (error) {
       setLoading(false);
       setIsError(true);
-      console.log('fetch error', error);
     }
   };
 
   useEffect(() => {
     fetchData();
-    console.log('route index', navigation.getState().routes);
   }, []);
-  useEffect(() => {
-    console.log('userPosts', userPosts);
-  }, [userPosts]);
 
   return (
     <SafeAreaView style={[globalStyles.container]}>

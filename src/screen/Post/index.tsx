@@ -7,8 +7,6 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {StackParamList} from '../../navigation/types';
 import LoadingText from '../../component/LoadingText';
-import {StyleSheet, View} from 'react-native';
-import {colors} from '../../utils/colors';
 import ErrorTapable from '../../component/ErrorTapable';
 
 type NavigationProps = StackNavigationProp<StackParamList, 'Post Detail'>;
@@ -41,7 +39,6 @@ export default function Post(): React.JSX.Element {
     } catch (error) {
       setLoading(false);
       setIsError(true);
-      console.log('fetch error', error);
     }
   };
 
@@ -50,11 +47,6 @@ export default function Post(): React.JSX.Element {
       fetchData();
     }
   }, []);
-
-  useEffect(() => {
-    console.log('posts', posts);
-    console.log('users', users);
-  }, [posts, users]);
 
   const findUserById = (userId: number): Record<string, any> => {
     const user: any = users.find(u => u.id === userId);
